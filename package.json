@@ -1,0 +1,73 @@
+{
+	"name": "react-drag-demo",
+	"version": "1.0.0",
+	"main": "index.js",
+	"repository": "https://github.com/fortune-cook1e/react-drag-demo.git",
+	"author": "fortune cookie <767077147@qq.com>",
+	"license": "MIT",
+	"scripts": {
+		"dev": "cross-env NODE_ENV=development webpack serve --config ./config/webpack.dev.js",
+		"build": "cross-env NODE_ENV=production webpack --config config/webpack.prod.js",
+		"lint": "cross-env eslint src --ext .js,.jsx,.ts,.tsx --cache --fix",
+		"stylelint": "cross-env stylelint src *.less *.css --fix --custom-syntax postcss-less"
+	},
+	"lint-staged": {
+		"src/**/*.{ts,tsx,js,jsx}": [
+			"yarn lint",
+			"git add ."
+		],
+		"src/**/*.{less,css}": [
+			"yarn stylelint"
+		]
+	},
+	"husky": {
+		"hooks": {
+			"pre-commit": "lint-staged"
+		}
+	},
+	"dependencies": {
+		"antd": "^4.18.3",
+		"react": "^17.0.2",
+		"react-dom": "^17.0.2",
+		"react-router-dom": "^6.2.1"
+	},
+	"devDependencies": {
+		"@babel/core": "^7.16.7",
+		"@babel/plugin-transform-runtime": "^7.16.8",
+		"@babel/preset-env": "^7.16.8",
+		"@babel/preset-react": "^7.16.7",
+		"@babel/preset-typescript": "^7.16.7",
+		"@types/react": "^17.0.38",
+		"@types/react-dom": "^17.0.11",
+		"@types/react-router-dom": "^5.3.2",
+		"@typescript-eslint/eslint-plugin": "^5.9.1",
+		"@typescript-eslint/parser": "^5.9.1",
+		"babel-loader": "^8.2.3",
+		"clean-webpack-plugin": "^4.0.0",
+		"cross-env": "^7.0.3",
+		"css-loader": "^6.5.1",
+		"eslint": "^8.7.0",
+		"eslint-config-prettier": "^8.3.0",
+		"eslint-plugin-import": "^2.25.4",
+		"eslint-plugin-prettier": "^4.0.0",
+		"eslint-plugin-react": "^7.28.0",
+		"eslint-plugin-react-hooks": "^4.3.0",
+		"html-webpack-plugin": "^5.5.0",
+		"husky": "4.2.5",
+		"less-loader": "^10.2.0",
+		"lint-staged": "^12.1.7",
+		"mini-css-extract-plugin": "2.4.5",
+		"postcss-less": "^6.0.0",
+		"postcss-loader": "^6.2.1",
+		"prettier": "^2.5.1",
+		"style-loader": "^3.3.1",
+		"stylelint": "^14.2.0",
+		"stylelint-config-prettier": "^9.0.3",
+		"stylelint-config-standard": "^24.0.0",
+		"typescript": "^4.5.4",
+		"webpack": "^5.66.0",
+		"webpack-cli": "^4.9.1",
+		"webpack-dev-server": "^4.7.3",
+		"webpack-merge": "^5.8.0"
+	}
+}
