@@ -1,0 +1,37 @@
+@tools-height: 64px;
+@components-width: 200px;
+@attributes-width: 200px;
+
+.home {
+	height: 100vh;
+
+	.tools {
+		width: 100%;
+		height: @tools-height;
+		background-color: lightcoral;
+	}
+
+	.main {
+		display: flex;
+		justify-content: space-between;
+		height: calc(100% - @tools-height);
+
+		.components {
+			width: @components-width;
+			height: 100%;
+			background-color: lightcyan;
+		}
+
+		.editor {
+			width: calc(100% - @attributes-width - @components-width);
+			height: 100%;
+			padding: 20px;
+		}
+
+		.attributes {
+			width: @attributes-width;
+			height: 100%;
+			background-color: lightsalmon;
+		}
+	}
+}
