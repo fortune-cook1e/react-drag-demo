@@ -1,7 +1,17 @@
 import React from 'react'
+import { IComponentData } from '@/types'
 
-const CustomText = (): JSX.Element => {
-	return <div>this is custom text</div>
+interface Props {
+	element: IComponentData
+}
+
+const CustomText = ({ element }: Props): JSX.Element => {
+	const { label = '', icon = '', style, value = '' } = element
+	return (
+		<div style={style}>
+			<p>{value}</p>
+		</div>
+	)
 }
 
 export default CustomText

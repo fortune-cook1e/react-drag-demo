@@ -1,26 +1,27 @@
+import { IComponentData } from '@/types'
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { RootState } from '../index'
 
 interface IComponent {
-	name: string
+	componentData: IComponentData[]
 }
 
 const initialState: IComponent = {
-	name: 'current'
+	componentData: []
 }
 
 export const componentSlice = createSlice({
 	name: 'component',
 	initialState,
 	reducers: {
-		setName: (state, action) => {
-			state.name = action.payload
+		addComponent: (state, action: PayloadAction<IComponentData>) => {
+			state.componentData = [...state.componentData, action.payload]
 		}
 	}
 })
 
-export const { setName } = componentSlice.actions
+export const { addComponent } = componentSlice.actions
 
-export const componentSelector = (state: RootState) => state
+export const componentSelector = (state: RootState) => state.component
 
 export default componentSlice.reducer

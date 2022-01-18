@@ -1,10 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit'
-import component from './slices/component'
+import reducers from './slices'
+import { createLogger } from 'redux-logger'
+
+const loggerMiddleware = createLogger()
 
 export const store = configureStore({
-	reducer: {
-		component
-	}
+	reducer: reducers,
+	middleware: getDefaultMiddleware =>
+		getDefaultMiddleware().concat(loggerMiddleware)
 })
 
 export type RootState = ReturnType<typeof store.getState>
