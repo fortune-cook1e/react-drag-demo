@@ -32,8 +32,6 @@ const Home = (): JSX.Element => {
 		component.id = id
 		component.style.left = clientX - editorRect.x
 		component.style.top = clientY - editorRect.y
-
-		console.log({ clientX, clientY, editorRect })
 		return component
 	}
 
