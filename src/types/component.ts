@@ -1,8 +1,11 @@
 import { CSSProperties } from 'react'
 
 const CUSTOM_COMPONENT_TEXT = 'CustomText' // 文本组件
+const CUSTOM_COMPONENT_IMAGE = 'CustomImage' // 图片组件
 
-type CustomComponentType = typeof CUSTOM_COMPONENT_TEXT
+type CustomComponentType =
+	| typeof CUSTOM_COMPONENT_TEXT
+	| typeof CUSTOM_COMPONENT_IMAGE
 
 export interface IComponentData {
 	id: string

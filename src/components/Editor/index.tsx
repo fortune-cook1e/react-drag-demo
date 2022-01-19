@@ -1,13 +1,16 @@
 import React, { CSSProperties, useEffect } from 'react'
 import CustomText from '../CustomText'
+import CustomImage from '../CustomImage'
 import Shape from '../Shape'
+import GridLine from '../GridLine'
 import { useAppSelector, useAppDispatch } from '@/hooks'
 import { componentSelector } from '@/store/slices/component'
 import { getStyle } from '@/utils/dom'
 import styles from './index.module.less'
 
 const CustomComponentMap = {
-	CustomText
+	CustomText,
+	CustomImage
 }
 
 const Editor = (): JSX.Element => {
@@ -33,10 +36,11 @@ const Editor = (): JSX.Element => {
 
 	return (
 		<div id='editor' className={styles.editor}>
+			<GridLine />
 			{componentData.map(c => {
 				const Component = CustomComponentMap[c.component]
 				return (
-					<Shape style={getShapeStyle(c.style)} key={c.id}>
+					<Shape style={getShapeStyle(c.style)} key={c.id} element={c}>
 						<Component style={getComponentStyle(c.style)} element={c} />
 					</Shape>
 				)

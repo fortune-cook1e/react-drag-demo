@@ -8,11 +8,8 @@ interface Props {
 
 const CustomText = ({ element, style }: Props): JSX.Element => {
 	const { label = '', icon = '', value = '' } = element
-	return (
-		<div style={style}>
-			<p>{value}</p>
-		</div>
-	)
+
+	return <div style={style}>{value}</div>
 }
 
 export default CustomText

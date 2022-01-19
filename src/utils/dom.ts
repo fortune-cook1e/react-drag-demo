@@ -23,3 +23,41 @@ export const getStyle = (
 	}
 	return _style
 }
+
+/**
+ * @description 将某个css样式提出来并去除单位
+ * @date 2022-01-19 19:56:46
+ * @return {number}
+ */
+export const removeUnitFromStyle = ({
+	style,
+	field,
+	unit = 'px'
+}: {
+	style?: CSSProperties
+	field: keyof CSSProperties
+	unit?: string
+}) => {
+	let value = 0
+	if (!style) return value
+	for (const key in style) {
+		if (key === field) {
+			value = Number(
+				(style[key as keyof CSSProperties] as string).replace(unit, '')
+			)
+			break
+		}
+	}
+	return value
+}
+
+/**
+ * @description 添加css单位
+ * @param {string} value
+ * @param {*} unit
+ * @date 2022-01-19 20:10:00
+ * @return {string}
+ */
+export const addUnit = (value: string, unit = 'px') => {
+	return value + unit
+}

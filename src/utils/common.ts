@@ -1,6 +1,6 @@
 export const deepCopy = (target: any) => {
 	if (typeof target === 'object') {
-		const result: any = Array.isArray(target) ? [] : []
+		const result: any = Array.isArray(target) ? [] : {}
 		for (const key in target) {
 			if (typeof target[key] === 'object') {
 				result[key] = deepCopy(target[key])
