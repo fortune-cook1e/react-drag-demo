@@ -11,7 +11,7 @@ import Tools from '@/components/Tools'
 import styles from './index.module.less'
 
 import { CUSTOM_COMPONENT_DATA } from '@/constants'
-import { deepCopy, getEditorDom } from '@/utils'
+import { addUnit, deepCopy, getEditorDom } from '@/utils'
 
 const Home = (): JSX.Element => {
 	const dispatch = useAppDispatch()
@@ -32,9 +32,8 @@ const Home = (): JSX.Element => {
 		const id = uuidV4()
 		const editorRect = editorDom.getBoundingClientRect()
 		component.id = id
-		// TODO: 这里设置component的style时需要使用addUnit 增加像素
-		component.style.left = clientX - editorRect.x
-		component.style.top = clientY - editorRect.y
+		component.style.left = addUnit(clientX - editorRect.x)
+		component.style.top = addUnit(clientY - editorRect.y)
 
 		return component
 	}

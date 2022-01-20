@@ -5,9 +5,8 @@ import {
 	updateCurrentComponent,
 	componentSelector
 } from '@/store/slices/component'
-import { removeUnitFromStyle } from '@/utils'
+import { removeUnitFromStyle, addUnit } from '@/utils'
 
-// TODO: 这里InputNumber的数据 需要用getCurrentComponentValue方法把数字从样式中提出来
 const Base = (): JSX.Element => {
 	const dispatch = useAppDispatch()
 	const { currentComponent } = useAppSelector(componentSelector)
@@ -19,7 +18,7 @@ const Base = (): JSX.Element => {
 			...currentComponent,
 			style: {
 				...currentComponent.style,
-				[field]: value
+				[field]: addUnit(value)
 			}
 		}
 		dispatch(updateCurrentComponent(newComponentData))
@@ -37,7 +36,7 @@ const Base = (): JSX.Element => {
 			<div>
 				<p>X 坐标</p>
 				<InputNumber
-					value={Number(currentComponent?.style.left)}
+					value={getCurrentComponentValue('left')}
 					onChange={handleValueChange('left')}
 				/>
 			</div>
@@ -45,7 +44,7 @@ const Base = (): JSX.Element => {
 			<div>
 				<p>Y 坐标</p>
 				<InputNumber
-					value={Number(currentComponent?.style.top)}
+					value={getCurrentComponentValue('top')}
 					onChange={handleValueChange('top')}
 				/>
 			</div>
@@ -53,10 +52,7 @@ const Base = (): JSX.Element => {
 				<p>宽</p>
 				<InputNumber
 					min={1}
-					value={removeUnitFromStyle({
-						style: currentComponent?.style,
-						field: 'width'
-					})}
+					value={getCurrentComponentValue('width')}
 					onChange={handleValueChange('width')}
 				/>
 			</div>
@@ -64,10 +60,7 @@ const Base = (): JSX.Element => {
 				<p>高</p>
 				<InputNumber
 					min={1}
-					value={removeUnitFromStyle({
-						style: currentComponent?.style,
-						field: 'height'
-					})}
+					value={getCurrentComponentValue('height')}
 					onChange={handleValueChange('height')}
 				/>
 			</div>

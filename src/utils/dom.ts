@@ -58,6 +58,6 @@ export const removeUnitFromStyle = ({
  * @date 2022-01-19 20:10:00
  * @return {string}
  */
-export const addUnit = (value: string, unit = 'px') => {
+export const addUnit = (value: string | number, unit = 'px') => {
 	return value + unit
 }
